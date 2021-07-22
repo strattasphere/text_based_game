@@ -1,0 +1,24 @@
+Aim of the game:
+
+To find the necromancer by and defeat it before he takes complete control of the city.
+
+********************************************
+
+Basic actions:
+- Walk
+- Run
+- Fight
+- Change weapon
+- Pick up loot
+- Use items
+- Rest
+- Save/load
+- Win/lose
+
+Basic effects:
+- lose/gain health
+- Bleed
+- Buff/debuff
+- Death
+- Probability determined attacks
+- Effective/ineffective weapons
