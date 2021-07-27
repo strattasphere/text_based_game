@@ -27,6 +27,8 @@ def welcomeScreen():
 def helpScreen():
 
     print ("\nGame Controls:")
+
+    print("\n\tTo move around the map, type: 'Walk'")
     print ("\tTo move North, type: 'North'")
     print ("\tTo move South, type: 'South'")
     print ("\tTo move East, type: 'East'")

@@ -7,11 +7,11 @@ To find the necromancer by and defeat it before he takes complete control of the
 ********************************************
 
 Player actions:
-- Move to location
-    - "North"
-    - "South"
-    - "East"
-    - "West"
+X Move to location
+    X "North"
+    X "South"
+    X "East"
+    X "West"
   
 - Investigate
 - Fight
@@ -20,6 +20,15 @@ Player actions:
 - Use items
 - Rest
 - Show map
+- Drop items (can only have a certain amount)
+
+NPCs
+- NPC class
+     - Health
+     - Damage output
+     - Special abilities/actions
+     - Speech
+     - Flavour text
 
 
 Game actions
