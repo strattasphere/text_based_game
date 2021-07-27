@@ -2,23 +2,43 @@ Aim of the game:
 
 To find the necromancer by and defeat it before he takes complete control of the city.
 
+(Next idea: Horror survival)
+
 ********************************************
 
-Basic actions:
-- Walk
-- Run
+Player actions:
+- Move to location
+    - "North"
+    - "South"
+    - "East"
+    - "West"
+  
+- Investigate
 - Fight
 - Change weapon
 - Pick up loot
 - Use items
 - Rest
+- Show map
+
+
+Game actions
 - Save/load
 - Win/lose
 
+
 Basic effects:
-- lose/gain health
+- Lose/gain health
 - Bleed
 - Buff/debuff
 - Death
 - Probability determined attacks
 - Effective/ineffective weapons
+
+
+Game design
+- Different biomes
+- Minimap of some sort
+
+
+
