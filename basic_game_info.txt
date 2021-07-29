@@ -12,6 +12,7 @@ X Move to location
     X "South"
     X "East"
     X "West"
+    - "Stay" (stay still)
   
 - Investigate
 - Fight
