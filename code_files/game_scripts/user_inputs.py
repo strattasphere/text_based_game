@@ -6,8 +6,11 @@ def checkInput(player_input):
     # TO DO: Implement a Try/Except statement
     valid_input = False
 
-    player_input = player_input.lower()
+    
     while valid_input == False:
+        
+        player_input = player_input.lower()
+
         if player_input == 'help':
             
             game_text.helpScreen()
@@ -33,6 +36,9 @@ def checkInput(player_input):
 
         elif player_input == 'walk':
             return 'walk'
+
+        elif player_input == 'stay':
+            return 'stay'
 
         else:
             player_input = input("That was not a valid input, please try again:")

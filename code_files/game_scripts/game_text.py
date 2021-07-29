@@ -10,7 +10,8 @@ def welcomeScreen():
 
     time.sleep(2)
 
-    print("Can you help save us from the evil necromancer who is causing\ndecay through our city and bringing the dead (and worse) to life?\n")
+    print("Can you help save us from the evil necromancer who is causing\
+        decay through our city and bringing the dead (and worse) to life?\n")
 
     time.sleep(3)
 
@@ -33,6 +34,7 @@ def helpScreen():
     print ("\tTo move South, type: 'South'")
     print ("\tTo move East, type: 'East'")
     print ("\tTo move West, type: 'West'")
+    print ("\tTo stay where you are, type: 'Stay'")
 
     print("To exit the game, type: 'Escape'")
 

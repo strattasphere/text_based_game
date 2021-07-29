@@ -44,6 +44,9 @@ class Player:
 
             self.location = (x_loc, y_loc)
 
+        elif direction == 'stay':
+            pass
+
 
 def printTest():
 
