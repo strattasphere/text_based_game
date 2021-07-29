@@ -7,14 +7,25 @@ To find the necromancer by and defeat it before he takes complete control of the
 ********************************************
 
 Player actions:
-X Move to location
+• Move to location
     X "North"
     X "South"
     X "East"
     X "West"
-    - "Stay" (stay still)
+    X "Stay" (stay still)
+  
+- Map
+    - Location marker (x,y)
+    - Printable minimap
+    - Reveal locations
+    - Show doors
+    - Show walls
   
 - Investigate
+    - See what is in the location (location name, any NPCs, any searchable items)
+    - Choose action (speak to NPC, 
+    
+    
 - Fight
 - Change weapon
 - Pick up loot
