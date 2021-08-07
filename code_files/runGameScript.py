@@ -15,17 +15,18 @@ escape = False
 
 game_text.welcomeScreen()
 
+# INITIALISE MAP
+
+player_map = map.createMap()
+
+
 # INITIALISE PLAYER
 
 player_name = input("\nWhat is your name?: ")
 
-player1 = player_main_script.Player(player_name)
+player1 = player_main_script.Player(player_name, player_map)
 
 print ("\nYour name is:", player1.name)
-
-player_map = map.createMap()
-
-print(type(player_map))
 
 # ********************************************************************
 
@@ -59,7 +60,7 @@ while escape != True:
 
     elif player_input == 'map':
 
-        user_inputs.showMap(player1.location, player_map)
+        user_inputs.showMap(player_map, player1.location)
 
 
 

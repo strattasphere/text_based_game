@@ -15,45 +15,35 @@ class Player:
     
         # choose a random start location for player
 
-        while map[start_row][start_col] == 1:
+        '''while map[start_row][start_col] == 1:
             start_row = random.randint(0,1)
-            start_col = random.randint(0,1)
+            start_col = random.randint(0,1)'''
         
 
 
-        for lst in map:
-            self.location = (0,0)
+        self.location = [3,1]
         
     def moveLocation(self, direction):
 
         if direction == 'north':
-            x_loc, y_loc = self.location
-
-            x_loc += 0
-            y_loc += -1
-
-            self.location = (x_loc, y_loc)
+            
+            self.location[0] += 0
+            self.location[1] += -1
 
         elif direction == 'south':
-            x_loc, y_loc = self.location
-            x_loc += 0
-            y_loc += 1
 
-            self.location = (x_loc, y_loc)
+            self.location[0] += 0
+            self.location[1] += 1
 
         elif direction == 'east':
-            x_loc, y_loc = self.location
-            x_loc += 1
-            y_loc += 0
-
-            self.location = (x_loc, y_loc)
+           
+            self.location[0] += 1
+            self.location[1] += 0
 
         elif direction == 'west':
-            x_loc, y_loc = self.location
-            x_loc += -1
-            y_loc += 0
-
-            self.location = (x_loc, y_loc)
+           
+            self.location[0] += -1
+            self.location[1] += 0
 
         elif direction == 'stay':
             pass

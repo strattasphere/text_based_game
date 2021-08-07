@@ -1,30 +1,11 @@
 
 # The Map
-# making a change to the new branch
 
 from numpy import array
 import math
 import random
 
-
 # Procedural generation of the map happens here
-
-
-# the map class stores the data about the map objects
-class Map:
-    
-    def __init__(self, width, height):
-        self.width = width # the width of the map
-        self.height = height # the height of the map
-        self.mapObjList = [] # a list of all the map objects
-
-
-    def printMap(mapObjList):
-
-        for obj in mapObjList:
-        
-            print (obj.top_bound)
-            
 
 class MapObject:
     
@@ -42,28 +23,28 @@ class MapObject:
         self.left_bound = left_bound
         self.top_bound = top_bound
         self.bottom_bound = bottom_bound
-        '''
-        # map objects start in a hidden state, then are revealed by the player when entered
-        self.revealed = False 
+       '''
 
-        def setWalls():
-            if self.right_bound_open:
-                pass
+class Map:
+    
+    def __init__(self):
+        self.dimensions = 20
+        self.max_tunnels = 20
+        self.max_length = 8
 
-        def showBounds(): # prints the map object
-            pass
+    def create2DArray(self, num):
+        
+        array2D = [[] for pos in range(self.dimensions)] 
+        x = 0
+        for list in array2D:
+            for elem in range(0, self.dimensions):
+                array2D[x].append(num) 
+            x += 1
 
-        def hideBounds(): # hides the map object 
-            pass
+        return array2D
 
-        def destroyBound(): # allows for a wall to be destoyed in game
-            pass
-
-        def openBound(): # allows for a boudary to be opened in game
-            pass
-
-        def closeBound(): # allows for a boundary to be closed in game
-            pass
+    def getStartLocation(self):
+        pass
 
 ''' 
 1. A function randomly generates a series of map objects that fit work with each other
@@ -71,35 +52,21 @@ class MapObject:
 3. The list is printed in order combining the map objects to show a map
 '''
 
-def create2DArray(num, dimensions):
-    array2D = [[] for pos in range(dimensions)] 
-    x = 0
-    for list in array2D:
-        for elem in range(0, dimensions):
-            array2D[x].append(num) 
-        x += 1
-
-    return array2D
-
-def printMap(map):
-    n = 0
-    for x in map:
-        print (map[n])
-        n += 1
-    return map
-
 # Procedural generation
 def createMap():
-    
+    '''
     dimensions = 20 # width and height of the map
     max_tunnels = 20 # max number of tunnels possible
     max_length = 8 # max length each tunnel can have
+    '''
 
     # create a 2D array (or list of lists) of 1's
-    map = create2DArray(1, dimensions)
+    new_map = Map()
+    
+    map_array = new_map.create2DArray(1)
 
-    current_row = math.floor(random.random() * dimensions) # our current row starting at a random row
-    current_column = math.floor(random.random() * dimensions) # our current column starting at a random column
+    current_row = math.floor(random.random() * new_map.dimensions) # our current row starting at a random row
+    current_column = math.floor(random.random() * new_map.dimensions) # our current column starting at a random column
 
     #print("Starting row =", current_row)
     #print("Starting column =", current_column)
@@ -110,7 +77,7 @@ def createMap():
 
     # Create some tunnels
 
-    while max_tunnels > 0 and dimensions > 0 and max_length > 0:
+    while new_map.max_tunnels > 0 and new_map.dimensions > 0 and new_map.max_length > 0:
 
         #print("\nMax tunnels =", max_tunnels)
         #print("Dimensions =", dimensions)
@@ -132,7 +99,7 @@ def createMap():
 
             #print("\nChosen random direction = ", random_direction)
         
-        random_length = math.ceil(random.random() * max_length) # length the next tunnel will be (max of max_length)
+        random_length = math.ceil(random.random() * new_map.max_length) # length the next tunnel will be (max of max_length)
         if random_length == 0:
             random_length += 1
 
@@ -146,15 +113,15 @@ def createMap():
             # break the loop if it is going out of the map
             if (current_row == 0 and random_direction[0] == -1 or 
                 current_column == 0 and random_direction[1] == -1 or 
-                current_row == dimensions - 1 and random_direction[0] == 1 or 
-                current_column == dimensions - 1 and random_direction[1] == 1):
+                current_row == new_map.dimensions - 1 and random_direction[0] == 1 or 
+                current_column == new_map.dimensions - 1 and random_direction[1] == 1):
                 
                 #print("\n\tMap going out of bounds\n\tWhile loop now breaking")
 
                 break
 
             else:
-                map[current_row][current_column] = 0 #set the value of the index in map to 0 (a tunnel, making it one longer)
+                map_array[current_row][current_column] = 0 #set the value of the index in map to 0 (a tunnel, making it one longer)
                 current_row += random_direction[0] #add the value from randomDirection to row and col (-1, 0, or 1) to update our location
                 current_column += random_direction[1]
                 tunnel_length += 1 # the tunnel is now 1 longer
@@ -167,71 +134,66 @@ def createMap():
         
         if (tunnel_length >= 0): 
             last_direction = random_direction # set the last direction so we can remember which way we went
-            max_tunnels -= 1 # a tunnel has been created so we decrement how many we have left to create
+            new_map.max_tunnels -= 1 # a tunnel has been created so we decrement how many we have left to create
 
             #print("The new max tunnels is =", max_tunnels)
             #print("The last direction is =", last_direction)
 
 
     #print("\n\tClosing program\n")
-    '''
+    
     n = 0
-    for x in map:
-        print (map[n])
-        n += 1'''
+    for x in map_array:
+        print (map_array[n])
+        n += 1
 
-    return map
-
-
-#created_map = createMap()
+    return map_array
 
 
 def printMap(map, player_loc):
     
     print()
 
-    for lst in map:
+    found_player = False
+    map_x = 0
+    map_y = 0
+
+    for y_axis in map:
 
         print_string = ""
-        
-        for num in lst:
+        map_x = 0
 
-            if num == 0:
-                print_string = print_string + " " + "[ ]"
-            elif num == 1:
-                print_string = print_string + " " + "   "
-            elif player_loc == map[lst][num]:
-                print_string = print_string + " " + "[O]"
+        for x_axis in y_axis:
             
+            if (x_axis == 0 and found_player == False and player_loc[0] == map_x and player_loc[1] == map_y):
+                print_string = print_string + " " + "[P]"
+                found_player = True
 
+            elif x_axis == 0:
+                print_string = print_string + " " + "[ ]"
+
+            elif x_axis == 1:
+                print_string = print_string + " " + "   "
+            
+            map_x += 1
+
+        map_y += 1
+        
         print(print_string)
     
+    print(found_player)
     
-#printMap(created_map, 0)
+#created_map = createMap()
+
+#printMap(created_map)
 
 
+#******* TEST *******
+
+'''test_map = [[0,0,1,0,1],[1,0,1,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]
+player_location = [1,1]
+
+printMap(test_map, player_location)'''
 
 
-'''
-def printMap():
-    
-    print("----------     ----------     ----------")
-    print("|        |     |        |     |        |")
-    print("|        |     |        |     |        |")
-    print("|        |     |        |     |        |")
-    print("|        |     |        |     |        |")
-    print("---    ---     ---    ---     ---    ---")
-    print("---    ---     ---    ---     ---    ---")
-    print("|        |     |        |     |        |")
-    print("|        |     |                       |")
-    print("|        |     |                       |")
-    print("|        |     |        |     |        |")
-    print("---    ---     ---    ---     ---    ---")
-    print("---    ---     ---    ---     ---    ---")
-    print("|        |     |        |     |        |")
-    print("|   ()                  |     |        |")
-    print("|                       |     |        |")
-    print("|        |     |        |     |        |")
-    print("----------     ----------     ----------")
-    
-    pass'''
+#******* TEST *******

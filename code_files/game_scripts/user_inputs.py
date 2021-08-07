@@ -66,7 +66,7 @@ def checkLocation(player1):
 
         # sets found_necro = True
 
-def showMap(player_loc, player_map):
+def showMap(player_map, player_loc):
 
     print ("\n\tHere is the map")
 
