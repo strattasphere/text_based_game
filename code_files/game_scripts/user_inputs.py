@@ -1,5 +1,6 @@
 from game_scripts import game_text
 from player_scripts import player_main_script
+from game_scripts import map
 
 def checkInput(player_input):
     
@@ -39,6 +40,9 @@ def checkInput(player_input):
 
         elif player_input == 'stay':
             return 'stay'
+        
+        elif player_input == 'map':
+            return 'map'
 
         else:
             player_input = input("That was not a valid input, please try again:")
@@ -61,3 +65,9 @@ def checkLocation(player1):
         print ("\n\tYOU HAVE FOUND THE NECROMANCER")
 
         # sets found_necro = True
+
+def showMap(player_loc, player_map):
+
+    print ("\n\tHere is the map")
+
+    map.printMap(player_map, player_loc)

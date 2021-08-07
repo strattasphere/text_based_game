@@ -5,6 +5,7 @@ from numpy import array
 import math
 import random
 
+
 # Procedural generation of the map happens here
 
 
@@ -23,26 +24,30 @@ class Map:
         
             print (obj.top_bound)
             
-            
-
-            
-    
 
 class MapObject:
     
-    def __init__(self, loc_id, env, right_bound, left_bound, top_bound, bottom_bound):
+    def __init__(self, loc_id, env):
         self.loc_id = loc_id # the (x,y) value of the location
         self.env = env # the biome type of the room ()
 
         # the status of the walls (door_open, door_locked, wall)
+        self.right_bound_open = False
+        self.left_bound_open = False
+        self.top_bound_open = False
+        self.bottom_bound_open = False
+        '''
         self.right_bound = right_bound
         self.left_bound = left_bound
         self.top_bound = top_bound
         self.bottom_bound = bottom_bound
-
+        '''
         # map objects start in a hidden state, then are revealed by the player when entered
         self.revealed = False 
-    
+
+        def setWalls():
+            if self.right_bound_open:
+                pass
 
         def showBounds(): # prints the map object
             pass
@@ -65,7 +70,7 @@ class MapObject:
 3. The list is printed in order combining the map objects to show a map
 '''
 
-def createArray(num, dimensions):
+def create2DArray(num, dimensions):
     array2D = [[] for pos in range(dimensions)] 
     x = 0
     for list in array2D:
@@ -75,22 +80,28 @@ def createArray(num, dimensions):
 
     return array2D
 
+def printMap(map):
+    n = 0
+    for x in map:
+        print (map[n])
+        n += 1
+    return map
 
 # Procedural generation
 def createMap():
     
     dimensions = 20 # width and height of the map
-    max_tunnels = 50 # max number of tunnels possible
+    max_tunnels = 20 # max number of tunnels possible
     max_length = 8 # max length each tunnel can have
 
-    # create an array/list of 1's
-    map = createArray(1, dimensions)
+    # create a 2D array (or list of lists) of 1's
+    map = create2DArray(1, dimensions)
 
     current_row = math.floor(random.random() * dimensions) # our current row starting at a random row
     current_column = math.floor(random.random() * dimensions) # our current column starting at a random column
 
-    print("Starting row =", current_row)
-    print("Starting column =", current_column)
+    #print("Starting row =", current_row)
+    #print("Starting column =", current_column)
 
     directions = [(-1, 0), (1, 0), (0, -1), (0, 1)] # array to get a random direction, up, down, left, right
     last_direction = [0,0] # saves the last direction we went
@@ -98,15 +109,13 @@ def createMap():
 
     # Create some tunnels
 
-    while (max_tunnels > 0 and dimensions > 0 and max_length > 0):
+    while max_tunnels > 0 and dimensions > 0 and max_length > 0:
 
-        print("Max tunnels =", max_tunnels)
-        print("Dimensions =", dimensions)
-        print("Max_length =", max_length)
+        #print("\nMax tunnels =", max_tunnels)
+        #print("Dimensions =", dimensions)
+        #print("Max_length =", max_length)
 
-
-
-        print ("Creating tunnels has started")
+        #print ("\nCreating tunnels has started")
 
         '''
         Gets a random directions until it is perpendicular to our last_direction
@@ -120,21 +129,26 @@ def createMap():
 
             random_direction = directions[math.floor(random.random() * len(directions))] 
 
-            print("Chosen random direction = ", random_direction)
+            #print("\nChosen random direction = ", random_direction)
         
         random_length = math.ceil(random.random() * max_length) # length the next tunnel will be (max of max_length)
+        if random_length == 0:
+            random_length += 1
+
         tunnel_length = 0 # current length of tunnel being created
 
         # loop until our tunnel is long enough or until we hit an edge
         while (tunnel_length < random_length):
 
+            #print("\n\tLooping until tunnel is long enough")
+
             # break the loop if it is going out of the map
             if (current_row == 0 and random_direction[0] == -1 or 
-                current_column == 0 and random_direction[0] == -1 or 
+                current_column == 0 and random_direction[1] == -1 or 
                 current_row == dimensions - 1 and random_direction[0] == 1 or 
                 current_column == dimensions - 1 and random_direction[1] == 1):
                 
-                print("While loop now breaking")
+                #print("\n\tMap going out of bounds\n\tWhile loop now breaking")
 
                 break
 
@@ -144,28 +158,60 @@ def createMap():
                 current_column += random_direction[1]
                 tunnel_length += 1 # the tunnel is now 1 longer
 
-                print("The new current row = ", current_row)
-                print("The new current column = ", current_column)
+                #print("\nThe new current row = ", current_row)
+                #print("\nThe new current column = ", current_column)
+                #print("\nTunnel length is now =", tunnel_length)
 
-                
+            #printMap(map)
         
-        if (tunnel_length > 0): 
+        if (tunnel_length >= 0): 
             last_direction = random_direction # set the last direction so we can remember which way we went
-            max_tunnels =- 1 # a tunnel has been created so we decrement how many we have left to create
+            max_tunnels -= 1 # a tunnel has been created so we decrement how many we have left to create
 
-    print("Closing program")
+            #print("The new max tunnels is =", max_tunnels)
+            #print("The last direction is =", last_direction)
+
+
+    #print("\n\tClosing program\n")
+    '''
     n = 0
     for x in map:
         print (map[n])
-        n += 1
+        n += 1'''
+
     return map
 
-# this is a pre-built map to then eventually be replaced by
-# a procedural generation machine
+
+#created_map = createMap()
 
 
-createMap()
+def printMap(map, player_loc):
+    
+    print()
 
+    for lst in map:
+
+        print_string = ""
+        
+        for num in lst:
+
+            if num == 0:
+                print_string = print_string + " " + "[ ]"
+            elif num == 1:
+                print_string = print_string + " " + "   "
+            elif player_loc == map[lst][num]:
+                print_string = print_string + " " + "[O]"
+            
+
+        print(print_string)
+    
+    
+#printMap(created_map, 0)
+
+
+
+
+'''
 def printMap():
     
     print("----------     ----------     ----------")
@@ -187,8 +233,4 @@ def printMap():
     print("|        |     |        |     |        |")
     print("----------     ----------     ----------")
     
-    pass
-
-#map_list = ['']
-
-#printMap()
+    pass'''

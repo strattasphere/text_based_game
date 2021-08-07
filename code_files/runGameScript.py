@@ -7,6 +7,7 @@
 from player_scripts import player_main_script
 from game_scripts import game_text
 from game_scripts import user_inputs
+from game_scripts import map
 
 escape = False
 
@@ -22,6 +23,9 @@ player1 = player_main_script.Player(player_name)
 
 print ("\nYour name is:", player1.name)
 
+player_map = map.createMap()
+
+print(type(player_map))
 
 # ********************************************************************
 
@@ -52,6 +56,10 @@ while escape != True:
     elif player_input == 'walk':
 
         user_inputs.walk(player1)
+
+    elif player_input == 'map':
+
+        user_inputs.showMap(player1.location, player_map)
 
 
 

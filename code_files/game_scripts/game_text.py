@@ -8,20 +8,20 @@ def welcomeScreen():
 
     print("\nWelcome to the city, where foul, unearthly things have been happening.\n")
 
-    time.sleep(2)
+    #time.sleep(2)
 
     print("Can you help save us from the evil necromancer who is causing\
         decay through our city and bringing the dead (and worse) to life?\n")
 
-    time.sleep(3)
+    #time.sleep(3)
 
     print("Enter...\n")
 
-    time.sleep(2)
+    #time.sleep(2)
 
     print("At your own peril...\n")
 
-    time.sleep(2)
+    #time.sleep(2)
 
     input("Press enter to continue")
 
