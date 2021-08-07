@@ -1,9 +1,11 @@
+
+from game_scripts import map 
 import math
 import random
 
 class Player:
     
-    def __init__(self, name, map):
+    def __init__(self, name, player_loc):
         
         self.name = name
         self.health = 100
@@ -12,16 +14,8 @@ class Player:
         self.weapon_list = ['rusty blade']
         self.item_count = 1
         self.item_list = ['potion']
-    
-        # choose a random start location for player
 
-        '''while map[start_row][start_col] == 1:
-            start_row = random.randint(0,1)
-            start_col = random.randint(0,1)'''
-        
-
-
-        self.location = [3,1]
+        self.location = player_loc
         
     def moveLocation(self, direction):
 

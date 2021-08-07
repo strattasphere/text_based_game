@@ -6,6 +6,17 @@ To find the necromancer by and defeat it before he takes complete control of the
 
 ********************************************
 
+CURRENT TASK:
+- Player Spawn point
+
+BUGS:
+
+GAME-BREAKING
+
+Minor 
+- having spaces in commands makes them fail
+
+
 Player actions:
 • Move to location
     X "North"
@@ -13,12 +24,17 @@ Player actions:
     X "East"
     X "West"
     X "Stay" (stay still)
+    - Change to "up, down, left, right"
+    - Unable to move into undefined spaces
+    - Refine to be able to type "walk left, etc" to speed up actions
   
 - Map
-    - Location marker (x,y)
-    - Printable minimap
-    - Reveal locations
-    - Show doors
+    X Location marker (x,y)
+    X Printable minimap
+    - Spawn points (player)
+    - Spawn points (enemy)
+    - Reveal locations/fog of war
+    - Show doors ? -> Could be represented with a backslash [ ][ ][ ][\][ ][ ][ ]
     - Show walls
   
 - Investigate
@@ -30,8 +46,8 @@ Player actions:
 - Change weapon
 - Pick up loot
 - Use items
-- Rest
-- Show map
+- Rest - % chance of being attacked
+X Show map
 - Drop items (can only have a certain amount)
 
 NPCs

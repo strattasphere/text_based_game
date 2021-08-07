@@ -29,8 +29,13 @@ class Map:
     
     def __init__(self):
         self.dimensions = 20
-        self.max_tunnels = 20
+        self.max_tunnels = 50
         self.max_length = 8
+
+        # set start location for map
+        self.start_location = [0,0]
+        self.start_location[0] = math.floor(random.random() * self.dimensions) # our current row starting at a random row
+        self.start_location[1] = math.floor(random.random() * self.dimensions) # our current column starting at a random column
 
     def create2DArray(self, num):
         
@@ -44,7 +49,8 @@ class Map:
         return array2D
 
     def getStartLocation(self):
-        pass
+        print ("THE MAP START LOCATION IS, ", self.start_location)
+        return self.start_location
 
 ''' 
 1. A function randomly generates a series of map objects that fit work with each other
@@ -52,8 +58,9 @@ class Map:
 3. The list is printed in order combining the map objects to show a map
 '''
 
+
 # Procedural generation
-def createMap():
+def createMap(new_map):
     '''
     dimensions = 20 # width and height of the map
     max_tunnels = 20 # max number of tunnels possible
@@ -61,12 +68,14 @@ def createMap():
     '''
 
     # create a 2D array (or list of lists) of 1's
-    new_map = Map()
+    
     
     map_array = new_map.create2DArray(1)
 
-    current_row = math.floor(random.random() * new_map.dimensions) # our current row starting at a random row
-    current_column = math.floor(random.random() * new_map.dimensions) # our current column starting at a random column
+    current_location = new_map.getStartLocation()
+
+    current_row = current_location[0]
+    current_column = current_location[1]
 
     #print("Starting row =", current_row)
     #print("Starting column =", current_column)
@@ -183,6 +192,9 @@ def printMap(map, player_loc):
     
     print(found_player)
     
+
+#new_map = Map()
+
 #created_map = createMap()
 
 #printMap(created_map)

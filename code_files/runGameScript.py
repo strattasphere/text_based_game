@@ -17,14 +17,17 @@ game_text.welcomeScreen()
 
 # INITIALISE MAP
 
-player_map = map.createMap()
+player_map = map.Map()
 
+player_map_array = map.createMap(player_map)
 
 # INITIALISE PLAYER
 
+player_location = player_map.getStartLocation()
+
 player_name = input("\nWhat is your name?: ")
 
-player1 = player_main_script.Player(player_name, player_map)
+player1 = player_main_script.Player(player_name, player_location)
 
 print ("\nYour name is:", player1.name)
 
@@ -60,7 +63,7 @@ while escape != True:
 
     elif player_input == 'map':
 
-        user_inputs.showMap(player_map, player1.location)
+        user_inputs.showMap(player_map_array, player1.location)
 
 
 

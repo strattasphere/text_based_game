@@ -45,7 +45,7 @@ def checkInput(player_input):
             return 'map'
 
         else:
-            player_input = input("That was not a valid input, please try again:")
+            player_input = input("That was not a valid input, please try again: ")
             
 
 def walk(player1):
