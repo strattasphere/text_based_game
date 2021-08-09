@@ -17,27 +17,65 @@ class Player:
 
         self.location = player_loc
         
-    def moveLocation(self, direction):
+    def moveLocation(self, direction, player_map_array):
 
-        if direction == 'north':
+        x_val, y_val = self.location[0], self.location[1]
+
+        if direction == 'north' or direction == 'walk north' or direction == 'walk up'  or direction == 'up':
+            try:
+                if player_map_array[x_val-1][y_val] == 0:
+
+                    self.location[0] += -1
+                    self.location[1] += 0
+                else:
+                    print("\n\tYou've hit a wall! You can't go that way!")
+            except:
+                print("\n\tStop trying to leave the city... Has it really got too much for you?")
             
-            self.location[0] += 0
-            self.location[1] += -1
 
-        elif direction == 'south':
+        elif direction == 'south' or direction == 'walk south' or direction == 'walk down' or direction == 'down':
 
-            self.location[0] += 0
-            self.location[1] += 1
+            try:
+                if player_map_array[x_val+1][y_val] == 0:
 
-        elif direction == 'east':
-           
-            self.location[0] += 1
-            self.location[1] += 0
+                    self.location[0] += 1
+                    self.location[1] += 0
 
-        elif direction == 'west':
-           
-            self.location[0] += -1
-            self.location[1] += 0
+                else:
+                    print("\n\tYou've hit a wall! You can't go that way!")    
+            
+            except:
+                print("\n\tStop trying to leave the city... Has it really got too much for you?")
+
+
+        elif direction == 'east' or direction == 'walk east' or direction == 'walk right' or direction == 'right':
+            try:
+                if player_map_array[x_val][y_val+1] == 0:
+
+                    self.location[0] += 0
+                    self.location[1] += 1
+
+                else:
+                    print("\n\t You've hit a wall! You can't go that way!")
+
+            except:
+                print("\n\tStop trying to leave the city... Has it really got too much for you?")
+
+            
+
+        elif direction == 'west' or direction == 'walk west' or direction == 'walk left' or direction == 'left':
+            try:  
+                if player_map_array[x_val][y_val-1] == 0:
+
+                    self.location[0] += 0
+                    self.location[1] += -1
+
+                else:
+                    print("\n\t You've hit a wall! You can't go that way!")
+                    
+            except:
+                print("\n\tStop trying to leave the city... Has it really got too much for you?")
+            
 
         elif direction == 'stay':
             pass

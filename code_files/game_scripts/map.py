@@ -29,7 +29,7 @@ class Map:
     
     def __init__(self):
         self.dimensions = 20
-        self.max_tunnels = 50
+        self.max_tunnels = 30
         self.max_length = 8
 
         # set start location for map
@@ -167,30 +167,30 @@ def printMap(map, player_loc):
     map_x = 0
     map_y = 0
 
-    for y_axis in map:
+    for x_axis in map:
 
         print_string = ""
-        map_x = 0
+        map_y = 0
 
-        for x_axis in y_axis:
+        for y_axis in x_axis:
             
-            if (x_axis == 0 and found_player == False and player_loc[0] == map_x and player_loc[1] == map_y):
-                print_string = print_string + " " + "[P]"
+            if (y_axis == 0 and found_player == False and player_loc[0] == map_x and player_loc[1] == map_y):
+                print_string = print_string + " " + "[@]"
                 found_player = True
 
-            elif x_axis == 0:
+            elif y_axis == 0:
                 print_string = print_string + " " + "[ ]"
 
-            elif x_axis == 1:
+            elif y_axis == 1:
                 print_string = print_string + " " + "   "
             
-            map_x += 1
+            map_y += 1
 
-        map_y += 1
+        map_x += 1
         
         print(print_string)
     
-    print(found_player)
+    #print(found_player)
     
 
 #new_map = Map()

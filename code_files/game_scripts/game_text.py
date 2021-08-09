@@ -29,11 +29,12 @@ def helpScreen():
 
     print ("\nGame Controls:")
 
-    print("\n\tTo move around the map, type: 'Walk'")
-    print ("\tTo move North, type: 'North'")
-    print ("\tTo move South, type: 'South'")
-    print ("\tTo move East, type: 'East'")
-    print ("\tTo move West, type: 'West'")
+    print("\n\tTo move around the map, type: 'Walk',\
+        \nfollowed by the direction you want to go in")
+    print ("\tTo move North, type: 'Up'")
+    print ("\tTo move South, type: 'Down'")
+    print ("\tTo move East, type: 'Right'")
+    print ("\tTo move West, type: 'Left'")
     print ("\tTo stay where you are, type: 'Stay'")
 
     print("To exit the game, type: 'Escape'")

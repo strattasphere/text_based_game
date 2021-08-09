@@ -2,7 +2,7 @@ from game_scripts import game_text
 from player_scripts import player_main_script
 from game_scripts import map
 
-def checkInput(player_input):
+def checkInput(player_input, player, player_map_array):
     
     # TO DO: Implement a Try/Except statement
     valid_input = False
@@ -16,42 +16,50 @@ def checkInput(player_input):
             
             game_text.helpScreen()
             valid_input = True
-        elif player_input == 'north':
+        elif player_input == 'north' or player_input == 'walk north' or player_input == 'walk up'  or player_input == 'up':
             valid_input = True
-            return 'north'
-
-        elif player_input == 'south':
-            valid_input = True
-            return 'south'
+            player.moveLocation(player_input, player_map_array)
             
-        elif player_input == 'east':
-            valid_input = True
-            return 'east'
+            return 'north' 
 
-        elif player_input == 'west':
+        elif player_input == 'south' or player_input == 'walk south' or player_input == 'walk down' or player_input == 'down':
             valid_input = True
-            return 'west'
+            player.moveLocation(player_input, player_map_array) 
+            
+            return 'south' 
+
+        elif player_input == 'east' or player_input == 'walk east' or player_input == 'walk right' or player_input == 'right':
+            valid_input = True
+            player.moveLocation(player_input, player_map_array) 
+
+            return 'east' 
+
+        elif player_input == 'west' or player_input == 'walk west' or player_input == 'walk left' or player_input == 'left':
+            valid_input = True
+            player.moveLocation(player_input, player_map_array) 
+
+            return 'west' 
 
         elif player_input == 'escape':
             return True
 
-        elif player_input == 'walk':
+        elif player_input == 'walk' or player_input == 'wwalk' or player_input == 'waalk' or player_input == 'wakl':
             return 'walk'
 
-        elif player_input == 'stay':
+        elif player_input == 'stay' or player_input == 'sstay' or player_input == 'staay' or player_input == 'stayss':
             return 'stay'
         
-        elif player_input == 'map':
+        elif player_input == 'map' or player_input == 'maps' or player_input == 'maaps':
             return 'map'
 
         else:
             player_input = input("That was not a valid input, please try again: ")
             
 
-def walk(player1):
+def walk(player1, player_map_array):
     print("\tYour current location is {0}".format(player1.location))
 
-    player_direction = checkInput(input("\nWhere would you like to go?: "))
+    player_direction = checkInput(input("\nWhere would you like to go?: "), player1, player_map_array)
 
     player1.moveLocation(player_direction.lower())
 

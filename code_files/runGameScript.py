@@ -39,12 +39,10 @@ print("To navigate this world, you must type in commands\
  and explore to find treasures, new weapons\nand your way to defeating the Necromancer.")
 print("\nHere are a list of the commands you will need to use.\n\nYou can access this at any time by typing 'Help' into the command bar.\n\nTry it now.")
 
-user_inputs.checkInput(input("\nType 'Help': "))
+user_inputs.checkInput(input("\nType 'Help': "), player1, player_map_array)
 print("")
 
 print("\nYou have arrived in the entrance of the city")
-
-user_inputs.walk(player1)
 
 # TOTAL PLAYER CONTROL STARTS
 
@@ -52,14 +50,14 @@ while escape != True:
 
     print("\nWhat would you like to do now?")
 
-    player_input = user_inputs.checkInput(input())
+    player_input = user_inputs.checkInput(input(), player1, player_map_array)
 
     if player_input == True:
         escape = True
     
     elif player_input == 'walk':
 
-        user_inputs.walk(player1)
+        user_inputs.walk(player1, player_map_array)
 
     elif player_input == 'map':
 
