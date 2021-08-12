@@ -7,8 +7,9 @@ To find the necromancer by and defeat it before he takes complete control of the
 ********************************************
 
 CURRENT TASK:
-- Enemy Spawn point
-- Make tunnels at least 1 space away from another (change +1 to +2 )
+- Combat system
+
+
 
 BUGS:
 
@@ -25,28 +26,30 @@ Player actions:
     X "East"
     X "West"
     X "Stay" (stay still)
-    - Change to "up, down, left, right"
-    - Unable to move into undefined spaces
-    - Refine to be able to type "walk left, etc" to speed up actions
+    X Change to "up, down, left, right"
+    X Unable to move into undefined spaces
+    X Refine to be able to type "walk left, etc" to speed up actions
   
 - Map
     X Location marker (x,y)
     X Printable minimap
-    X Random starting spawn point (player)
-    - Random respawn points (player)
-    - Random start spawn points (enemy)
-    - Spawning of random doors
-    - Spawning of random checsts
-    - Reveal locations/fog of war
+    - Doors
+    - Chests/Investigateables
     - Show doors ? -> Could be represented with a backslash [ ][ ][ ][\][ ][ ][ ]
-    - Show walls
   
 - Investigate
     - See what is in the location (location name, any NPCs, any searchable items)
     - Choose action (speak to NPC, 
     
     
-- Fight
+- Combat system
+    - Turn-based
+    - Speed determined
+    - *UI*
+        - Health
+        - Mana
+        - 
+
 - Change weapon
 - Pick up loot
 - Use items

@@ -53,12 +53,19 @@ print("\nYou have arrived in the entrance of the city")
 # TOTAL PLAYER CONTROL STARTS
 
 escape = False
+fight_active = False
 
 while escape != True:
 
     print("\nWhat would you like to do now?")
 
     player_input = user_inputs.checkInput(input(), player1, player_map_array)
+
+    if player_input == "fight":
+        fight_active = True
+
+    while fight_active == True:
+        pass
 
     user_inputs.showMap(player_map_array, player1.location)
 
