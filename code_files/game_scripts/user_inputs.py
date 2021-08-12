@@ -65,6 +65,30 @@ def checkInput(player_input, player, player_map_array):
             player_input = input("That was not a valid input, please try again: ")
             
 
+def checkValidInput(player_input):
+    
+    valid_input = False
+
+    while valid_input == False:
+        
+        player_input = player_input.lower()
+
+        if player_input == 'fight':
+            valid_input = True
+            return 'fight'
+        elif player_input == 'use potion':
+            valid_input = True
+            return 'use potion' 
+        elif player_input == 'switch weapon':
+            valid_input = True
+            return 'switch weapon'
+            
+            
+        else:
+            player_input = input("That was not a valid input, please try again: ")
+
+
+
 def walk(player1, player_map_array):
     print("\tYour current location is {0}".format(player1.location))
 
@@ -76,15 +100,23 @@ def walk(player1, player_map_array):
 
     player1.checkLocation()
 
-def checkLocation(player1):
-    
-    if player1.location[0] == 1 and player1.location[1] == 2:
-        print ("\n\tYOU HAVE FOUND THE NECROMANCER")
-
-        # sets found_necro = True
 
 def showMap(player_map, player_loc):
 
     print ("\n\tHere is the map, your locaiton is:,", player_loc)
 
+    print ("\n\tHere is the map.")
+
     map.printMap(player_map, player_loc)
+
+
+
+
+
+
+'''def checkLocation(player1):
+    
+    if player1.location[0] == 1 and player1.location[1] == 2:
+        print ("\n\tYOU HAVE FOUND THE NECROMANCER")
+
+        # sets found_necro = True'''

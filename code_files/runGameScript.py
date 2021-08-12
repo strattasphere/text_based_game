@@ -9,6 +9,7 @@ from game_scripts import game_text
 from game_scripts import user_inputs
 from game_scripts import map
 from game_scripts import created_maps
+from game_scripts import fight_mechanics
 
 
 
@@ -53,7 +54,7 @@ print("\nYou have arrived in the entrance of the city")
 # TOTAL PLAYER CONTROL STARTS
 
 escape = False
-fight_active = False
+fight_active = True
 
 while escape != True:
 
@@ -65,7 +66,10 @@ while escape != True:
         fight_active = True
 
     while fight_active == True:
-        pass
+        
+        fight_mechanics.showPlayerUI(player1)
+
+        fight_active = False
 
     user_inputs.showMap(player_map_array, player1.location)
 
@@ -77,3 +81,4 @@ print("GAME OVER\n\nThanks for playing, {0}!".format(player_name))
 
 
 
+fight_mechanics.printthing(player1)

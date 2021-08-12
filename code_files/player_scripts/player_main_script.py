@@ -9,11 +9,13 @@ class Player:
     def __init__(self, name, player_loc):
         
         self.name = name
-        self.health = 10
+        self.current_health = 10
+        self.max_health = 10
         self.armour = 3
         self.mana = 0
         self.weapon_count = 1
         self.weapon_list = ['rusty blade']
+        self.active_weapon = "rusty blade"
         self.item_count = 1
         self.item_list = ['potion']
         self.keep_key = False
@@ -99,6 +101,16 @@ class Player:
         elif self.location == locations.keep_loc:
             print("\n\tYOU'VE ARRIVED AT THE KEEP")
 
+
+    def playerPotionCount(self):
+        
+        player_potions_count = 0
+
+        for item in self.item_list:
+            if item == "potion":
+                player_potions_count += 1
+
+        return player_potions_count
 
 def printTest():
 

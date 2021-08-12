@@ -3,12 +3,14 @@
 
 class Enemy():
 
-    def __init__(self, enemy_name, health, speed, weapon, *magic_ability): # * = creates tuple of the arguments
-        self.enemy_name = enemy_name
-        self.health = health
+    def __init__(self, name, max_health, speed, weapon, *magic_ability): # * = creates tuple of the arguments
+        self.name = name
+        self.health_remaining = max_health
+        self.max_health = max_health
         self.speed = speed
         self.weapon = weapon
         self.magic_ability = magic_ability
+        self.flavour = ""
 
     def attackPlayer(self):
         pass
@@ -30,6 +32,3 @@ zombie_guard_capt = Enemy('Zombie Guard Captain', 7, 5, 'deadly spear', 'cripple
 # the necromancer
 
 necromancer = Enemy('Necromancer', 10, 7, "necromancer's blade", 'fireball', 'resurrect' )
-
-print(necromancer.enemy_name)
-print(type(necromancer.magic_ability))
