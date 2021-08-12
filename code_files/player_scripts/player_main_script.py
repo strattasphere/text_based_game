@@ -1,5 +1,6 @@
 
 from game_scripts import map 
+from game_scripts import locations
 import math
 import random
 
@@ -8,12 +9,14 @@ class Player:
     def __init__(self, name, player_loc):
         
         self.name = name
-        self.health = 100
+        self.health = 10
+        self.armour = 3
         self.mana = 0
         self.weapon_count = 1
         self.weapon_list = ['rusty blade']
         self.item_count = 1
         self.item_list = ['potion']
+        self.keep_key = False
 
         self.location = player_loc
         
@@ -79,6 +82,22 @@ class Player:
 
         elif direction == 'stay':
             pass
+
+    def checkLocation(self):
+        if self.location == locations.tavern.location:
+            print("\n\tYOU'VE ARRIVED AT THE TAVERN")
+
+        elif self.location == locations.blacksmth_loc:
+            print("\n\tYOU'VE ARRIVED AT THE BLACKSMITH")
+
+        elif self.location == locations.church_loc:
+            print("\n\tYOU'VE ARRIVED AT THE CHURCH")
+
+        elif self.location == locations.guard_twr_loc:
+            print("\n\tYOU'VE ARRIVED AT THE GUARD TOWER")
+
+        elif self.location == locations.keep_loc:
+            print("\n\tYOU'VE ARRIVED AT THE KEEP")
 
 
 def printTest():

@@ -183,6 +183,9 @@ def printMap(map, player_loc):
 
             elif y_axis == 1:
                 print_string = print_string + " " + "   "
+
+            elif type(y_axis) == str:
+                print_string = print_string + " " + " " + y_axis + " "
             
             map_y += 1
 
@@ -198,7 +201,6 @@ def printMap(map, player_loc):
 #created_map = createMap()
 
 #printMap(created_map)
-
 
 #******* TEST *******
 

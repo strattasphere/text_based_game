@@ -37,6 +37,13 @@ def helpScreen():
     print ("\tTo move West, type: 'Left'")
     print ("\tTo stay where you are, type: 'Stay'")
 
+    print ("\tTo see your map, type: 'Map'")
+
+    #To be implemented
+    print ("\tTo see what is in your pack, type: 'Pack'")
+    print ("\tTo investigate a location, type: 'Investigate'")
+    
+
     print("To exit the game, type: 'Escape'")
 
 
